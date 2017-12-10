@@ -9,6 +9,9 @@ module.exports= function (app) {
 
   app.post("/api/user",createUser);
   app.get("/api/user" ,findUserByCredentials);
+  app.delete("/api/user/:userId",deleteUser);
+  app.get("/api/admin/user" ,checkIsAdmin,findAllUsers);
+  app.get("/api/admin/isAdmin" ,isAdmin);
   app.get("/api/user/:userId",findUserById);
   app.put("/api/user/:userId",updateUser);
   app.post ('/api/login', passport.authenticate('local'), login);
@@ -85,6 +88,41 @@ module.exports= function (app) {
          res.json(user);
        });
   }
+
+  function deleteUser(req,res) {
+    var userId = req.params["userId"];
+    userModel.deleteUser(userId)
+      .then(function (u) {
+        res.json(u);
+      },function (err) {
+      });
+  }
+
+  function findAllUsers(req,res) {
+    userModel.findAllUsers()
+      .then(function (users) {
+         res.json(users);
+      });
+  }
+
+  function checkIsAdmin(req,res,next) {
+     if(req.isAuthenticated() && req.user.role == 'ADMIN'){
+       next();
+     }
+      else{
+       res.send(403);
+     }
+  }
+
+  function isAdmin(req,res) {
+    if(req.isAuthenticated() && req.user.role == 'ADMIN'){
+      res.json(req.user);
+    }
+    else{
+      res.send('0');
+    }
+  }
+
 
   function findUserByCredentials(req,res) {
     var username = req.query["username"];

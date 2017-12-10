@@ -10,6 +10,7 @@ var UserSchema = mongoose.Schema({
   email:String,
   phone:String,
   location:String,
+  role:{type:String,default:"user"},
   followers:[String],
   following:[String],
   facebook: {

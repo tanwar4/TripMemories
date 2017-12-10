@@ -2,11 +2,12 @@
   <div class="row container-fluid">
     <div class="col-xs-12 col-md-6 col-sm-6 navbar-header">
       <a class="navbar-brand" href="#">TripsDiaries</a>
-    </div>
+          </div>
 
    <div  class="col-xs-12 col-md-6 col-sm-6">
       <ul class="inline nav navbar-nav  navbar-right">
-        <li><a [routerLink]="['/feed']"><span class="glyphicon glyphicon-bell"></span></a></li>
+        <a  class="navbar navbar-brand" href="/admin/user" [hidden]= "user.role !=='ADMIN'"> USERS</a>
+        <li><a [routerLink]="['/feed']"><span class="glyphicon glyphicon-home"></span></a></li>
         <li><a [routerLink]="['/user/','newtrip']"> <span class="glyphicon glyphicon-plus"></span>  </a></li>
         <li><a [routerLink]="['/profile']"><span class="glyphicon glyphicon-user"></span></a></li>
         <li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>

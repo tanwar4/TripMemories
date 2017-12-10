@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Http,RequestOptions, Response} from '@angular/http';
-import {User} from '../model/user.model.client';
 import { Observable } from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import 'rxjs/Rx';
@@ -16,14 +15,6 @@ export class UserService{
   constructor(private http:Http,private sharedService:SharedService,private router:Router){
 
   }
-/*  findUserByCredentials(userName: string,password:String):Observable<any>{
-    var url = this.domain+"/api/user?username="+userName+"&password="+password;
-    return this.http.get(url)
-      .map((response:Response)=>{
-        return response.json();
-      });
-
-  }*/
 
   login(username:string, password:string) {
     this.options.withCredentials = true;
@@ -128,13 +119,39 @@ export class UserService{
 
 
   }
-  /* Not required as of now
-   deleteUser(userId:String){
-      this.update = this.users.find(function (user) {
-      return user._id === userId;
+
+  findAllUsers(){
+    var url = this.domain+"/api/admin/user";
+    this.options.withCredentials = true;
+    return this.http.get(url,this.options)
+      .map((response:Response)=>{
+        return response.json();
+      });
+  }
+
+  isAdmin(){
+    var url = this.domain+"/api/admin/isAdmin";
+    this.options.withCredentials = true;
+    return this.http.get(url,this.options)
+      .map((response:Response)=>{
+        const  user = response.json();
+        if(user !== 0){
+           this.sharedService.user = user;
+           return true;
+        }
+        else{
+           this.router.navigate(['/login']);
+            return false;
+        }
       });
 
-      this.users.splice(this.users.index(this.update),1);
-  }*/
+  }
 
+  deleteUser(userId:String){
+    var url = this.domain+"/api/user/"+userId;
+    return this.http.delete(url)
+      .map((response:Response)=>{
+        return response.json();
+      });
+  }
 }

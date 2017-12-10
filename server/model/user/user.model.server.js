@@ -10,6 +10,7 @@ UserModel.findUserById = findUserById;
 UserModel.findUserByCredentials = findUserByCredentials;
 UserModel.findUserByUserName = findUserByUsername;
 UserModel.updateUser = updateUser;
+UserModel.deleteUser = deleteUser;
 
 module.exports = UserModel;
 
@@ -33,9 +34,13 @@ function findUserByCredentials(user,pwd){
 }
 
 function findAllUsers() {
-  UserModel.find(function (err,docs) {
+  return UserModel.find(function (err,docs) {
 
   });
+}
+
+function deleteUser(userId){
+  return UserModel.findByIdAndRemove(userId);
 }
 
 function findUserById(userId) {

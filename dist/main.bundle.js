@@ -94,12 +94,16 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_trip_image_search_image_search_component__ = __webpack_require__("../../../../../src/app/components/trip/image-search/image-search.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_trip_trip_edit_trip_edit_component__ = __webpack_require__("../../../../../src/app/components/trip/trip-edit/trip-edit.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_trip_trip_list_trip_list_component__ = __webpack_require__("../../../../../src/app/components/trip/trip-list/trip-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_admin_user_list_admin_user_list_component__ = __webpack_require__("../../../../../src/app/components/admin-user-list/admin-user-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_AdminServiceClient__ = __webpack_require__("../../../../../src/app/services/AdminServiceClient.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -143,6 +147,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_20__components_trip_image_search_image_search_component__["a" /* ImageSearchComponent */],
             __WEBPACK_IMPORTED_MODULE_21__components_trip_trip_edit_trip_edit_component__["a" /* TripEditComponent */],
             __WEBPACK_IMPORTED_MODULE_22__components_trip_trip_list_trip_list_component__["a" /* TripListComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__components_admin_user_list_admin_user_list_component__["a" /* AdminUserListComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -153,7 +158,7 @@ AppModule = __decorate([
         // Client Side services here
         providers: [__WEBPACK_IMPORTED_MODULE_8__services_test_service_client__["a" /* TestService */], __WEBPACK_IMPORTED_MODULE_9__services_user_service_client__["a" /* UserService */],
             __WEBPACK_IMPORTED_MODULE_13__services_flickr_service_client__["a" /* FlickrService */], __WEBPACK_IMPORTED_MODULE_14__services_shared_service_client__["a" /* SharedService */],
-            __WEBPACK_IMPORTED_MODULE_17__services_feed_service_client__["a" /* FeedService */], __WEBPACK_IMPORTED_MODULE_19__services_trip_service_client__["a" /* TripService */], __WEBPACK_IMPORTED_MODULE_15__services_auth_guard_service__["a" /* AuthGuard */]],
+            __WEBPACK_IMPORTED_MODULE_17__services_feed_service_client__["a" /* FeedService */], __WEBPACK_IMPORTED_MODULE_19__services_trip_service_client__["a" /* TripService */], __WEBPACK_IMPORTED_MODULE_24__services_AdminServiceClient__["a" /* AdminServiceClient */], __WEBPACK_IMPORTED_MODULE_15__services_auth_guard_service__["a" /* AuthGuard */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -178,9 +183,13 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_trip_new_trip_new_trip_component__ = __webpack_require__("../../../../../src/app/components/trip/new-trip/new-trip.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_trip_image_search_image_search_component__ = __webpack_require__("../../../../../src/app/components/trip/image-search/image-search.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_trip_trip_list_trip_list_component__ = __webpack_require__("../../../../../src/app/components/trip/trip-list/trip-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_admin_user_list_admin_user_list_component__ = __webpack_require__("../../../../../src/app/components/admin-user-list/admin-user-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_AdminServiceClient__ = __webpack_require__("../../../../../src/app/services/AdminServiceClient.ts");
 /**
  *   .
  */
+
+
 
 
 
@@ -203,10 +212,91 @@ var APP_ROUTES = [
     { path: 'user/newtrip', component: __WEBPACK_IMPORTED_MODULE_8__components_trip_new_trip_new_trip_component__["a" /* NewTripComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'user/newtrip/:tid', component: __WEBPACK_IMPORTED_MODULE_8__components_trip_new_trip_new_trip_component__["a" /* NewTripComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'user/image/search', component: __WEBPACK_IMPORTED_MODULE_9__components_trip_image_search_image_search_component__["a" /* ImageSearchComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
+    { path: 'admin/user', component: __WEBPACK_IMPORTED_MODULE_11__components_admin_user_list_admin_user_list_component__["a" /* AdminUserListComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_12__services_AdminServiceClient__["a" /* AdminServiceClient */]] },
 ];
 // Export the routes as module providers
 var Routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(APP_ROUTES);
 //# sourceMappingURL=app.routing.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin-user-list/admin-user-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "input{\r\n  margin-bottom: 5px;\r\n}\r\n.body{\r\n  padding-top: 70px;\r\n  padding-bottom: 70px;\r\n}\r\n\r\n\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin-user-list/admin-user-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\" row navbar navbar-static-top navbar-default\">\n  <div class=\" col-sm-12 container\">\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"#\">TripsDiaries</a>\n    </div>\n    <ul class=\"inline nav navbar-nav navbar-user navbar-right\">\n      <li><a [routerLink]=\"['/feed']\"><span class=\"glyphicon glyphicon-home\"></span></a></li>\n      <li><a [routerLink]=\"['/user/','newtrip']\"><span class=\"glyphicon glyphicon-plus\"></span>  </a></li>\n      <li><a [routerLink]=\"['/profile']\"><span class=\"glyphicon glyphicon-user\"></span></a></li>\n      <li><a [routerLink]=\"['/login']\"><span class=\"glyphicon glyphicon-log-out\"></span>Logout</a></li>\n    </ul>\n  </div>\n</nav>\n\n\n<!-------------------------------->\n\n<div class=\"body container-fluid\">\n\n<div class=\"col-md-6 col-md-offset-3\">\n\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\" *ngFor=\"let u of users\">\n      <b>{{u.username}}</b>\n      <a (click)=\"deleteUser(u._id)\" *ngIf=\"u.role != 'ADMIN'\"><span class=\"pull-right glyphicon glyphicon-cog\"> Delete </span></a>\n    </li>\n  </ul>\n\n</div>\n</div>\n\n\n\n\n\n\n\n\n\n<!------------------------------->\n\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin-user-list/admin-user-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminUserListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AdminUserListComponent = (function () {
+    function AdminUserListComponent(userService, router) {
+        this.userService = userService;
+        this.router = router;
+    }
+    AdminUserListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.findAllUsers()
+            .subscribe(function (users) {
+            _this.users = users;
+        });
+    };
+    AdminUserListComponent.prototype.deleteUser = function (userId) {
+        var _this = this;
+        this.userService.deleteUser(userId)
+            .subscribe(function (user) {
+            _this.ngOnInit();
+        });
+    };
+    return AdminUserListComponent;
+}());
+AdminUserListComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-admin-user-list',
+        template: __webpack_require__("../../../../../src/app/components/admin-user-list/admin-user-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/admin-user-list/admin-user-list.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
+], AdminUserListComponent);
+
+var _a, _b;
+//# sourceMappingURL=admin-user-list.component.js.map
 
 /***/ }),
 
@@ -218,7 +308,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "input{\r\n  margin-bottom: 5px;\r\n}\r\n.comment-sec{\r\n  margin-bottom: 15px;\r\n  margin-top: 5px;\r\n\r\n}\r\n\r\n.img-feed{\r\n  background-color: white;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.dbd-feed{\r\n  background-color: whitesmoke;\r\n  margin-bottom: 25px;\r\n}\r\n.sub-text {\r\n  color:#aaa;\r\n  font-family:verdana;\r\n  font-size:11px;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "input{\r\n  margin-bottom: 5px;\r\n}\r\n.comment-sec{\r\n  margin-bottom: 15px;\r\n  margin-top: 5px;\r\n\r\n}\r\n\r\n.img-feed{\r\n  background-color: white;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.dbd-feed{\r\n  background-color: whitesmoke;\r\n  margin-bottom: 25px;\r\n}\r\n.sub-text {\r\n  color:#aaa;\r\n  font-family:verdana;\r\n  font-size:11px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -231,7 +321,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/feed/feed.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-static-top navbar-default \">\n  <div class=\"row container-fluid\">\n    <div class=\"col-xs-12 col-md-6 col-sm-6 navbar-header\">\n      <a class=\"navbar-brand\" href=\"#\">TripsDiaries</a>\n    </div>\n\n   <div  class=\"col-xs-12 col-md-6 col-sm-6\">\n      <ul class=\"inline nav navbar-nav  navbar-right\">\n        <li><a [routerLink]=\"['/feed']\"><span class=\"glyphicon glyphicon-bell\"></span></a></li>\n        <li><a [routerLink]=\"['/user/','newtrip']\"> <span class=\"glyphicon glyphicon-plus\"></span>  </a></li>\n        <li><a [routerLink]=\"['/profile']\"><span class=\"glyphicon glyphicon-user\"></span></a></li>\n        <li><a [routerLink]=\"['/login']\"><span class=\"glyphicon glyphicon-log-out\"></span>Logout</a></li>\n      </ul>\n   </div>\n\n  </div>\n</nav>\n\n\n\n<div class=\"body col-md-6 col-md-offset-3\">\n  <ul class=\"nav nav-tabs\">\n    <li ><a (click)=\"getUserFeeds()\">My Feeds</a></li>\n    <li ><a (click)=\"getTrendingFeeds()\">Trending</a></li>\n  </ul>\n\n  <div class=\"row img-feed\">\n\n    <!------------------------------------->\n\n    <div class=\"col-sm-12 dbd-feed\" *ngFor=\"let feed of feeds\">\n\n      <div class=\"row\">\n        <div class=\"col-sm-6\">\n          <img src=\"../../../assets/images/main.jpg\" class=\"img-circle\" style=\"max-width:20%;height: 40px;width: 40px\">\n          <span><b> {{feed.creatorId.username}}</b> shared a trip to  <b>{{feed.location}} </b></span>\n        </div>\n\n        <div class=\"col-sm-2 pull-right\" *ngIf=\"(user.following.indexOf(feed.creatorId._id) == -1) && (user._id != feed.creatorId._id)\">\n          <button (click)=\"follow(feed.creatorId._id)\" class=\" avt-btn btn btn-danger btn-block\"> Follow</button>\n\n        </div>\n\n\n      </div>\n\n      <div>\n        <img  [src]=\"sanitize(feed.url)\" width=\"100%\" height=\"100%  \">\n      </div>\n      <div class=\"row comment-sec\">\n        <div class=\"col-sm-12\">\n\n          <h5 class=\"comments-title\">\n          <a (click) = \"showHide=!showHide\"> <span class=\"bagde\">{{feed.comments.length}}</span>\n            Comments</a>\n\n          </h5>\n          <ul class=\"media-list comment-detail-list\" *ngIf=\"showHide\">\n            <li class=\"media\" *ngFor=\"let comment of feed.comments\">\n              <div>\n                <div class=\"media-left\">\n                  <a href=\"#\" class=\"author\">{{ comment.author }}</a><br />\n                  <time class=\"sub-text\">{{ comment.date | date:\"MM/dd/yyyy\" }}</time>\n                </div>\n                <div class=\"media-body\">\n                  <div class=\"comment-body\">\n                    <p>{{ comment.comment }}</p>\n                  </div>\n                </div>\n              </div>\n            </li>\n          </ul>\n          <form class=\"form-inline\" role=\"form\">\n            <div class=\"form-group\">\n              <input class=\"form-control\" [(ngModel)]='commt' name =\"commt\"\n                     type=\"text\" placeholder=\"Your comments\" />\n            </div>\n            <div class=\"form-group\">\n              <button (click)=\"comment(feed._id)\" class=\"btn btn-default\">Comment </button>\n            </div>\n          </form>\n\n        </div>\n\n\n      </div>\n\n\n\n\n\n\n    </div>\n\n\n\n\n  </div>\n\n</div>\n\n"
+module.exports = "<nav class=\"navbar navbar-static-top navbar-default \">\n  <div class=\"row container-fluid\">\n    <div class=\"col-xs-12 col-md-6 col-sm-6 navbar-header\">\n      <a class=\"navbar-brand\" href=\"#\">TripsDiaries</a>\n          </div>\n\n   <div  class=\"col-xs-12 col-md-6 col-sm-6\">\n      <ul class=\"inline nav navbar-nav  navbar-right\">\n        <a  class=\"navbar navbar-brand\" href=\"/admin/user\" [hidden]= \"user.role !=='ADMIN'\"> USERS</a>\n        <li><a [routerLink]=\"['/feed']\"><span class=\"glyphicon glyphicon-home\"></span></a></li>\n        <li><a [routerLink]=\"['/user/','newtrip']\"> <span class=\"glyphicon glyphicon-plus\"></span>  </a></li>\n        <li><a [routerLink]=\"['/profile']\"><span class=\"glyphicon glyphicon-user\"></span></a></li>\n        <li><a [routerLink]=\"['/login']\"><span class=\"glyphicon glyphicon-log-out\"></span>Logout</a></li>\n      </ul>\n   </div>\n\n  </div>\n</nav>\n\n\n\n<div class=\"body col-md-6 col-md-offset-3\">\n  <ul class=\"nav nav-tabs\">\n    <li ><a (click)=\"getUserFeeds()\">My Feeds</a></li>\n    <li ><a (click)=\"getTrendingFeeds()\">Trending</a></li>\n  </ul>\n\n  <div class=\"row img-feed\">\n\n    <!------------------------------------->\n\n    <div class=\"col-sm-12 dbd-feed\" *ngFor=\"let feed of feeds\">\n\n      <div class=\"row\">\n        <div class=\"col-sm-6\">\n          <img src=\"../../../assets/images/main.jpg\" class=\"img-circle\" style=\"max-width:20%;height: 40px;width: 40px\">\n          <span><b> {{feed.creatorId.username}}</b> shared a trip to  <b>{{feed.location}} </b></span>\n        </div>\n\n        <div class=\"col-sm-2 pull-right\" *ngIf=\"(user.following.indexOf(feed.creatorId._id) == -1) && (user._id != feed.creatorId._id)\">\n          <button (click)=\"follow(feed.creatorId._id)\" class=\" avt-btn btn btn-danger btn-block\"> Follow</button>\n\n        </div>\n\n\n      </div>\n\n      <div>\n        <img  [src]=\"sanitize(feed.url)\" width=\"100%\" height=\"100%  \">\n      </div>\n      <div class=\"row comment-sec\">\n        <div class=\"col-sm-12\">\n\n          <h5 class=\"comments-title\">\n          <a (click) = \"showHide=!showHide\"> <span class=\"bagde\">{{feed.comments.length}}</span>\n            Comments</a>\n\n          </h5>\n          <ul class=\"media-list comment-detail-list\" *ngIf=\"showHide\">\n            <li class=\"media\" *ngFor=\"let comment of feed.comments\">\n              <div>\n                <div class=\"media-left\">\n                  <a href=\"#\" class=\"author\">{{ comment.author }}</a><br />\n                  <time class=\"sub-text\">{{ comment.date | date:\"MM/dd/yyyy\" }}</time>\n                </div>\n                <div class=\"media-body\">\n                  <div class=\"comment-body\">\n                    <p>{{ comment.comment }}</p>\n                  </div>\n                </div>\n              </div>\n            </li>\n          </ul>\n          <form class=\"form-inline\" role=\"form\">\n            <div class=\"form-group\">\n              <input class=\"form-control\" [(ngModel)]='commt' name =\"commt\"\n                     type=\"text\" placeholder=\"Your comments\" />\n            </div>\n            <div class=\"form-group\">\n              <button (click)=\"comment(feed._id)\" class=\"btn btn-default\">Comment </button>\n            </div>\n          </form>\n\n        </div>\n\n\n      </div>\n\n\n\n\n\n\n    </div>\n\n\n\n\n  </div>\n\n</div>\n\n"
 
 /***/ }),
 
@@ -1166,31 +1256,25 @@ var RegisterComponent = (function () {
             this.errorFlag = true;
             return;
         }
-        this.userService.register(this.username, this.password)
+        /*    this.userService.register(this.username,this.password)
+              .subscribe((user:any)=>{
+                console.log(user);
+                this.sharedService.user=user;
+                this.router.navigate(['profile']);
+            });*/
+        this.userService.findUserByUsername(this.username)
             .subscribe(function (user) {
-            console.log(user);
-            _this.sharedService.user = user;
-            _this.router.navigate(['profile']);
+            if (user) {
+                _this.dupFlag = true;
+            }
+        }, function (error) {
+            _this.userService.register(_this.username, _this.password)
+                .subscribe(function (user) {
+                console.log(user);
+                _this.sharedService.user = user;
+                _this.router.navigate(['profile']);
+            });
         });
-        /* this.userService.findUserByUsername(this.username)
-           .subscribe((user:any)=>{
-             if(user){
-               this.dupFlag = true;
-             }
-     
-           },
-           (error:any)=>{
-             const newUser= {
-             username :this.username,
-             password :this.password};
-             this.userService.createUser(newUser)
-               .subscribe((user:any)=> {
-                   this.router.navigate(['/user/',user._id]);
-                 },
-                 (error: any) => {
-                   console.error("Error creating profile");
-                 });
-           });*/
     };
     RegisterComponent.prototype.ngOnInit = function () {
     };
@@ -1211,6 +1295,46 @@ RegisterComponent = __decorate([
 
 var _a, _b, _c, _d;
 //# sourceMappingURL=register.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/AdminServiceClient.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminServiceClient; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AdminServiceClient = (function () {
+    function AdminServiceClient(userService) {
+        this.userService = userService;
+    }
+    AdminServiceClient.prototype.canActivate = function () {
+        return this.userService.isAdmin();
+    };
+    return AdminServiceClient;
+}());
+AdminServiceClient = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__user_service_client__["a" /* UserService */]) === "function" && _a || Object])
+], AdminServiceClient);
+
+var _a;
+//# sourceMappingURL=AdminServiceClient.js.map
 
 /***/ }),
 
@@ -1573,14 +1697,6 @@ var UserService = (function () {
         this.domain = __WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].baseUrl;
         this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]();
     }
-    /*  findUserByCredentials(userName: string,password:String):Observable<any>{
-        var url = this.domain+"/api/user?username="+userName+"&password="+password;
-        return this.http.get(url)
-          .map((response:Response)=>{
-            return response.json();
-          });
-    
-      }*/
     UserService.prototype.login = function (username, password) {
         this.options.withCredentials = true;
         var body = {
@@ -1653,6 +1769,38 @@ var UserService = (function () {
     UserService.prototype.updateUser = function (userId, user) {
         var url = this.domain + "/api/user/" + userId;
         return this.http.put(url, user)
+            .map(function (response) {
+            return response.json();
+        });
+    };
+    UserService.prototype.findAllUsers = function () {
+        var url = this.domain + "/api/admin/user";
+        this.options.withCredentials = true;
+        return this.http.get(url, this.options)
+            .map(function (response) {
+            return response.json();
+        });
+    };
+    UserService.prototype.isAdmin = function () {
+        var _this = this;
+        var url = this.domain + "/api/admin/isAdmin";
+        this.options.withCredentials = true;
+        return this.http.get(url, this.options)
+            .map(function (response) {
+            var user = response.json();
+            if (user !== 0) {
+                _this.sharedService.user = user;
+                return true;
+            }
+            else {
+                _this.router.navigate(['/login']);
+                return false;
+            }
+        });
+    };
+    UserService.prototype.deleteUser = function (userId) {
+        var url = this.domain + "/api/user/" + userId;
+        return this.http.delete(url)
             .map(function (response) {
             return response.json();
         });

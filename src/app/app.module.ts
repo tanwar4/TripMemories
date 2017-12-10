@@ -23,6 +23,8 @@ import {TripService} from "./services/trip.service.client";
 import {ImageSearchComponent } from './components/trip/image-search/image-search.component';
 import { TripEditComponent } from './components/trip/trip-edit/trip-edit.component';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
+import { AdminUserListComponent } from './components/admin-user-list/admin-user-list.component';
+import {AdminServiceClient} from "./services/AdminServiceClient";
 
 @NgModule({
   // Declare components here
@@ -38,6 +40,7 @@ import { TripListComponent } from './components/trip/trip-list/trip-list.compone
     ImageSearchComponent,
     TripEditComponent,
     TripListComponent,
+    AdminUserListComponent,
   ],
   imports:[
     BrowserModule,
@@ -48,7 +51,7 @@ import { TripListComponent } from './components/trip/trip-list/trip-list.compone
   // Client Side services here
   providers: [ TestService,UserService,
                FlickrService,SharedService,
-                FeedService,TripService ,AuthGuard],
+                FeedService,TripService ,AdminServiceClient,AuthGuard],   
   bootstrap: [AppComponent]
 })
 export class AppModule { }

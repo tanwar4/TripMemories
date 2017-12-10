@@ -33,14 +33,16 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.userService.register(this.username,this.password)
+
+
+/*    this.userService.register(this.username,this.password)
       .subscribe((user:any)=>{
         console.log(user);
         this.sharedService.user=user;
         this.router.navigate(['profile']);
-    });
+    });*/
 
-   /* this.userService.findUserByUsername(this.username)
+    this.userService.findUserByUsername(this.username)
       .subscribe((user:any)=>{
         if(user){
           this.dupFlag = true;
@@ -48,17 +50,13 @@ export class RegisterComponent implements OnInit {
 
       },
       (error:any)=>{
-        const newUser= {
-        username :this.username,
-        password :this.password};
-        this.userService.createUser(newUser)
-          .subscribe((user:any)=> {
-              this.router.navigate(['/user/',user._id]);
-            },
-            (error: any) => {
-              console.error("Error creating profile");
-            });
-      });*/
+        this.userService.register(this.username,this.password)
+          .subscribe((user:any)=>{
+            console.log(user);
+            this.sharedService.user=user;
+            this.router.navigate(['profile']);
+          });
+      });
 
   }
   ngOnInit() {
