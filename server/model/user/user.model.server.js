@@ -10,10 +10,6 @@ UserModel.findUserById = findUserById;
 UserModel.findUserByCredentials = findUserByCredentials;
 UserModel.findUserByUserName = findUserByUsername;
 UserModel.updateUser = updateUser;
-var api = {
-  findUserByFacebookId: findUserByFacebookId,
-};
-
 
 module.exports = UserModel;
 

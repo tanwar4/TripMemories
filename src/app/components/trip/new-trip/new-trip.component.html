@@ -1,0 +1,82 @@
+<nav class="navbar navbar-static-top navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">TripsDiaries</a>
+    </div>
+
+    <ul class="inline nav navbar-nav navbar-user navbar-right">
+      <li><a [routerLink]="['/feed']"><span class="glyphicon glyphicon-bell"></span></a></li>
+      <li><a [routerLink]="['/user/',userId,'newtrip']"> <span class="glyphicon glyphicon-plus"></span>  </a></li>
+      <li><a [routerLink]="['/profile']"><span class="glyphicon glyphicon-user"></span></a></li>
+      <li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="body container-fluid col-md-6 col-md-offset-3">
+  <form ngNoForm action="{{baseURL}}/api/uploads" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="name">
+    </div>
+
+    <div class="form-group">
+      <label for="text">Description</label>
+      <input [(ngModel)]='text' name="text"
+             type="text" class="form-control" id="text" placeholder="info about image">
+    </div>
+
+    <div class="form-group">
+      <label for="tag">Tags</label>
+      <input [(ngModel)]='tag' name="tag"
+             type="text" class="form-control" id="tag" placeholder="identify some tags">
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input [(ngModel)]='location' name="location"
+             type="text" class="form-control" id="location" placeholder="Identify the pic location">
+    </div>
+
+
+    <div class="form-group">
+      <label for="myFile">
+        Upload
+      </label>
+      <input [(ngModel)]="upload"
+             required
+             name="myFile"
+             type="file"
+             class="form-control"
+             id="myFile"
+             value="100%">
+    </div>
+
+    <div class="form-group">
+ <!--     <input  name="widgetId" value="{{widgetId}}"   style="display: none"/>
+      <input  name="webId" value="{{webId}}"   style="display: none"/>
+      <input  name="pageId" value="{{pageId}}"   style="display: none"/>-->
+      <input  name="tripId" value="{{tripId}}"   style="display: none">
+      <input  name="userId" value="{{userId}}"   style="display: none"/>
+      <button type="submit" class="form-control btn btn-primary">
+        Upload Image
+      </button>
+    </div>
+
+
+    <a class="btn btn-danger btn-block " (click)="deleteTrip()">Delete</a>
+
+
+  </form>
+
+  <button type="submit" class="form-control btn btn-primary"
+          [routerLink]="['/user/','image','search']">
+    Search Image
+
+
+  </button>
+
+</div>
+

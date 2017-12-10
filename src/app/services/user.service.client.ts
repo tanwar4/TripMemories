@@ -3,9 +3,9 @@ import {Http,RequestOptions, Response} from '@angular/http';
 import {User} from '../model/user.model.client';
 import { Observable } from 'rxjs/Observable';
 import {Router} from '@angular/router';
-import {environment} from '../../environments/environment';
 import 'rxjs/Rx';
 import {SharedService} from "./shared.service.client";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class UserService{
@@ -119,6 +119,7 @@ export class UserService{
     }
 
   updateUser(userId:string, user:any){
+
     var url = this.domain+"/api/user/"+userId;
       return  this.http.put(url,user)
       .map((response:Response)=>{

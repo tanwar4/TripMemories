@@ -9,6 +9,9 @@ var UserSchema = mongoose.Schema({
   lastName:String,
   email:String,
   phone:String,
+  location:String,
+  followers:[String],
+  following:[String],
   facebook: {
     id:    String,
     token: String

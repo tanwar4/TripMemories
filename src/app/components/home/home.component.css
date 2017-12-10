@@ -1,0 +1,30 @@
+input{
+  margin-bottom: 5px;
+}
+.db-image{
+  margin-bottom: 20px;
+}
+
+.center-block{
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+.img-feed{
+  background-color: rgba(252, 253, 237, 0.02);
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.dbd-feed{
+  background-color: whitesmoke;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.avatar{
+  height:50px;
+}
+.avt-btn{
+  float: right;
+  width: 70px;
+  height: 40px;
+}

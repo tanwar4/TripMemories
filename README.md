@@ -6,17 +6,12 @@ I have worked extensively on server side web applications using Java/J2ee Techno
 I also have experience in PEGA development having completed Certified System Architect 7.1.
 
 
-## Purpose of this repo:
-
-This repo is part of course CS5610: Web Development
-
-## Links
-
-Hosted App: https://webdev-anwar-tariq.herokuapp.com
-
 Project:
 
-Assignment: https://webdev-anwar-tariq.herokuapp.com/assets/
+Trip Diaries is a social network for travellers who can use this platform to share their adventures and trips.
+
+
+https://trips-diaries.herokuapp.com/
 
 
  

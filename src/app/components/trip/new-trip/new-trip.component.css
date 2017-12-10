@@ -1,0 +1,25 @@
+input{
+  margin-bottom: 5px;
+}
+
+.comment-sec{
+  margin-bottom: 15px;
+  margin-top: 5px;
+
+}
+
+.img-feed{
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.dbd-feed{
+  background-color: whitesmoke;
+  margin-bottom: 25px;
+}
+.sub-text {
+  color:#aaa;
+  font-family:verdana;
+  font-size:11px;
+}
+

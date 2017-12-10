@@ -1,66 +1,128 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-
-    <!--heading on the nav bar-->
-    <p class="navbar-header pull-left">
-      <a class="navbar-brand thick">
-        <b>Profile</b>
-      </a>
-    </p>
-
-    <!--tick mark-->
-    <p class="navbar-text pull-right">
-      <a (click)="update()"  class="navbar-link">
-        <span class="glyphicon glyphicon-ok"></span>
-      </a>
-    </p>
-
+<nav class=" row navbar navbar-static-top navbar-default">
+  <div class=" col-sm-12 container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">TripsDiaries</a>
+    </div>
+    <ul class="inline nav navbar-nav navbar-user navbar-right">
+      <li><a [routerLink]="['/feed']"><span class="glyphicon glyphicon-bell"></span></a></li>
+      <li><a [routerLink]="['/user/','newtrip']"><span class="glyphicon glyphicon-plus"></span>  </a></li>
+      <li><a [routerLink]="['/profile']"><span class="glyphicon glyphicon-user"></span></a></li>
+      <li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+    </ul>
   </div>
 </nav>
 
-<div class="body container-fluid">
-  <form>
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input [(ngModel)]="user.username" name="username"
-             type="text" class="form-control" id="username" placeholder="Alice" >
+
+<!-------------------------------->
+
+
+<div class="container">
+  <div class="row profile">
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <img src="../../../assets/images/main.jpg" class="img-responsive">
+        </div>
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            {{user.username}}
+          </div>
+          <div class="profile-usertitle-job">
+            {{user.location}}
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+          <button type="button" class="btn btn-success btn-sm">Update Pic</button>
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+          <ul class="nav">
+            <li class="active">
+              <a href="#">
+                <i class="glyphicon glyphicon-home"></i>
+                Overview </a>
+            </li>
+            <li>
+              <a [routerLink]="['/profile']">
+                <i class="glyphicon glyphicon-user"></i>
+                Account Settings </a>
+            </li>
+            <li>
+              <a  [routerLink]="['/user/','trips']">
+                <i class="glyphicon glyphicon-ok"></i>
+                My Trips </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="glyphicon glyphicon-flag"></i>
+                Help </a>
+            </li>
+          </ul>
+        </div>
+        <!-- END MENU -->
+      </div>
     </div>
+    <div  class="col-md-9">
+      <div class="profile-content">
+        <div class="body col-md-6 col-md-offset-3">
+          <form>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input [(ngModel)]="user.username" name="username"
+                     type="text" class="form-control" id="username" placeholder="Alice" >
+            </div>
 
-    <div class="form-group">
-      <label for="email">Email address</label>
-      <input [(ngModel)]="user.email" name="email"
-        type="email" class="form-control" id="email" placeholder=alice@gmail.com>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input [(ngModel)]="user.email" name="email"
+                     type="email" class="form-control" id="email" placeholder=alice@gmail.com>
+            </div>
+
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input [(ngModel)]="user.firstName" name="firstName"
+                     type="text" class="form-control" id="first-name" placeholder=ALice>
+            </div>
+
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input [(ngModel)]="user.lastName" name="lastName"
+                     type="text" class="form-control" id="last-name" placeholder=WonderLand>
+            </div>
+
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input [(ngModel)]="user.location" name="location"
+                     type="text" class="form-control" id="location" placeholder=WonderLand>
+            </div>
+
+            <a class="btn btn-success btn-block"
+               (click)="update()">Update Profile</a>
+          </form>
+
+        </div>
+
+      </div>
     </div>
-
-    <div class="form-group">
-      <label for="first-name">First Name</label>
-      <input [(ngModel)]="user.firstName" name="firstName"
-        type="text" class="form-control" id="first-name" placeholder=ALice>
-    </div>
-
-    <div class="form-group">
-      <label for="last-name">Last Name</label>
-      <input [(ngModel)]="user.lastName" name="lastName"
-        type="text" class="form-control" id="last-name" placeholder=WonderLand>
-    </div>
-
-    <a class="btn btn-primary btn-block"
-       [routerLink]="['/user/',user._id,'website']">Websites</a>
-    <a class="btn btn-danger btn-block "
-      (click)="logout()" >Logout</a>
-
-  </form>
-
+  </div>
 </div>
+<br>
+<br>
 
-<!-- Footer -->
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
-    <p class="navbar-text pull-right">
-      <a [routerLink]="['/user/',user._id]">
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
-    </p>
 
-  </div>
-</nav>
+
+
+
+
+
+
+
+<!------------------------------->
+
+

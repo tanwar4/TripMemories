@@ -21,32 +21,20 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUser();
+  }
 
-
-    this.route.params.subscribe(params =>{
-      console.log(this.sharedService.user);
-      this.user = this.sharedService.user || this.user;
-    });
-/*    this.route.params.subscribe(params => {
-      this.userId = params['uid'];
-      this.userService.findUserById(this.userId)
-        .subscribe(
-            (user:any)=>{
-              this.user = this.sharedService.user || user;
-              this.isDataAvailable=true;
-
-            },
-           (error: any) => {
-             console.error("Error getting user");
-             return Observable.throw(error);
-            });
-    });*/
+  getUser(){
+    //this.user = JSON.parse(localStorage.getItem("user"));
+    this.user = this.sharedService.user;
+    this.userId = this.user['_id'];
   }
 
   update(){
       this.userService.updateUser(this.userId,this.user)
         .subscribe((user:any)=>{
-           this.router.navigate(['/user/',this.userId]);
+          // this.router.navigate(['/user/',this.userId]);
+          this.ngOnInit();
            },
           (error: any) => {
           });
