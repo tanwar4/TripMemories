@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname,'public')));
 app.use(cookieParser());
-app.use(session({secret:"hkjashdjka"}));
+app.use(session({secret:process.env.SESSION_SECRET}));
 
 app.use(passport.initialize());
 app.use(passport.session());

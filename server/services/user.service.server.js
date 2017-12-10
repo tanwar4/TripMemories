@@ -4,6 +4,7 @@
 module.exports= function (app) {
   var passport = require('passport');
   var LocalStrategy = require('passport-local').Strategy;
+  var FacebookStrategy = require('passport-facebook').Strategy;
   var userModel = require('../model/user/user.model.server');
 
 
@@ -18,6 +19,42 @@ module.exports= function (app) {
   app.post('/api/register', register);
   app.post('/api/logout', logout);
   app.post('/api/loggedIn', loggedIn);
+
+  app.get('/facebook/login',
+    passport.authenticate('facebook',{scope:'email'}));
+
+  app.get('/facebook/oauth2callback',
+    passport.authenticate('facebook',{
+      successRedirect: 'https://trips-diaries.herokuapp.com/profile',
+      failureRedirect: 'https://trips-diaries.herokuapp.com/login'
+    }));
+
+  var facebookConfig = {
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL
+  };
+
+  passport.use(new FacebookStrategy(facebookConfig,facebookStrategy));
+
+  function facebookStrategy(token,refreshToken,profile,done) {
+    userModel
+      .findUserByFacebookId(profile.id)
+      .then( function (user) {
+        if(user) {return done(null,user);}
+        else{
+          var names = profile.displayName.split(" ");
+          var newFacebookUser = {lastname : names[1],
+            firstname : names[0],
+            email: profile.emails ? profile.emails[0].value:"",
+            facebook: {id:profile.id,token:token}};
+          return userModel.createUser(newFacebookUser);
+        }
+      })
+      .then( function (user) {
+        return done(null,user);
+      });
+  }
 
 
 
